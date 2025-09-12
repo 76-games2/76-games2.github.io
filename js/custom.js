@@ -1,3 +1,27 @@
+function loadGoogleAnalytics(trackingId) {
+  // Create the script tag for gtag.js
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${trackingId}`;
+  document.head.appendChild(script);
+
+  // Initialize the dataLayer and gtag function
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  // Assign gtag function globally
+  window.gtag = gtag;
+
+  // Configure gtag
+  gtag('js', new Date());
+  gtag('config', trackingId);
+}
+
+// Usage
+loadGoogleAnalytics('G-89VL90BMQK');
+
 /*
 
 Custom script
